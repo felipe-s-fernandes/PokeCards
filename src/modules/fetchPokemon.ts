@@ -12,6 +12,7 @@ export default async function fetchPokemon(pokemon: string): Promise<IPokemon> {
             return {
                 number: data.id,
                 name: capitalizeFirstLetter(data.name),
+                spriteUrl: data.sprites.front_default,
                 types:
                     data.types.length === 1
                         ? [data.types[0].type.name]
@@ -24,6 +25,8 @@ export default async function fetchPokemon(pokemon: string): Promise<IPokemon> {
         console.error(error);
         return {
             number: 0,
+            spriteUrl:
+                "https://archives.bulbagarden.net/media/upload/archive/9/9e/20090102034838%21Ghost_I.png",
             name: "Missingno",
             types: ["bird"],
         };
